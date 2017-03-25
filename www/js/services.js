@@ -47,4 +47,22 @@ angular.module('starter.services', [])
       return null;
     }
   };
+}
+
+)
+
+.factory('GetTest', function($http){
+  return function(group_id, username){
+    return $http.get('temp.json');
+  }
+})
+
+.factory('ParamTest', function(){
+  return function(name){
+    return "Hello " + name;
+  };
+})
+
+.factory('MyFactory', function(){
+  return "Hello";
 });

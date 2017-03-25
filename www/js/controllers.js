@@ -21,8 +21,13 @@ angular.module('starter.controllers', [])
   $scope.chat = Chats.get($stateParams.chatId);
 })
 
-.controller('MyCtrl', function($scope) {
+.controller('MyCtrl', function($scope, $http, MyFactory, ParamTest, GetTest) {
   $scope.myVar = "Lavender";
+  $scope.msg = MyFactory;
+  $scope.paramTest = ParamTest("John");
+  GetTest(1,2).success(function(response){
+      $scope.data = response.color;
+    });
 })
 
 .controller('AccountCtrl', function($scope) {
