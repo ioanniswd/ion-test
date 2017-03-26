@@ -21,8 +21,15 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 
-$mycolor: red;
+$mycolor: #886aea;
 p {
     color: $mycolor;
+    span {
+        color: red;
+    }
+}
+
+h2 {
+    color: $energized;
 }
     

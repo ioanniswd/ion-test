@@ -9816,4 +9816,9 @@ a.button {
   transition-duration: 0s; }
 
 p {
-  color: red; }
+  color: #886aea; }
+  p span {
+    color: red; }
+
+h2 {
+  color: #ffc900; }
