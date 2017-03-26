@@ -1,4 +1,4 @@
-angular.module('starter.services', [])
+angular.module('starter.services', ['ngStorage'])
 
 .factory('Chats', function() {
   // Might use a resource here that returns a JSON array
@@ -66,6 +66,20 @@ angular.module('starter.services', [])
       method: 'POST',
       url: "https://jsonplaceholder.typicode.com/posts"
     })
+  }
+})
+
+.factory('StorageTest', function($localStorage) {
+  return {
+    getAll: function() {
+      return $localStorage.things;
+    },
+    add: function(item) {
+      $localStorage.things.push(item);
+    },
+    remove: function(item) {
+      $localStorage.things.splice($localStorage.things.indexOf(item), 1);
+    }
   }
 })
 

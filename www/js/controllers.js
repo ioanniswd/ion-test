@@ -21,18 +21,21 @@ angular.module('starter.controllers', [])
   $scope.chat = Chats.get($stateParams.chatId);
 })
 
-.controller('MyCtrl', function($scope, $http, MyFactory, ParamTest, GetTest, PostTest) {
-  $scope.myVar = "Lavender";
-  $scope.msg = MyFactory;
-  $scope.paramTest = ParamTest("John");
-  GetTest(1,2).success(function(response){
-    $scope.getData = response;
-    console.log("Get data: ", $scope.getData);
-  });
-  PostTest(1,2).success(function(response) {
-    $scope.postData = response;
-    console.log("Post data: ", $scope.postData);
-  });
+.controller('MyCtrl', function($scope, StorageTest) {
+
+  $scope.getAll = function() {
+    $scope.all = StorageTest.getAll();
+    console.log("All", $scope.all);
+  };
+
+  $scope.add = function(item) {
+    StorageTest.add(item);
+  };
+
+  $scope.remove = function(item) {
+    StorageTest.remove(item);
+  };
+
 })
 
 .controller('AccountCtrl', function($scope) {
