@@ -53,7 +53,19 @@ angular.module('starter.services', [])
 
 .factory('GetTest', function($http){
   return function(group_id, username){
-    return $http.get('temp.json');
+    return $http({
+      method: 'GET',
+      url: "https://jsonplaceholder.typicode.com/posts/1",
+    });
+  }
+})
+
+.factory('PostTest', function($http) {
+  return function(group_id, username) {
+    return $http({
+      method: 'POST',
+      url: "https://jsonplaceholder.typicode.com/posts"
+    })
   }
 })
 
