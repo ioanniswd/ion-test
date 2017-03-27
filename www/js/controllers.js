@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ['ngStorage'])
 
 .controller('DashCtrl', function($scope) {})
 
@@ -21,12 +21,11 @@ angular.module('starter.controllers', [])
   $scope.chat = Chats.get($stateParams.chatId);
 })
 
-.controller('MyCtrl', function($scope, StorageTest) {
+.controller('MyCtrl', function($scope, $localStorage, StorageTest) {
 
-  $scope.getAll = function() {
-    $scope.all = StorageTest.getAll();
-    console.log("All", $scope.all);
-  };
+  if(!$localStorage.things) {
+    $localStorage.things = [];
+  }
 
   $scope.add = function(item) {
     StorageTest.add(item);
@@ -35,6 +34,10 @@ angular.module('starter.controllers', [])
   $scope.remove = function(item) {
     StorageTest.remove(item);
   };
+
+  $scope.showList = false;
+  $scope.all = StorageTest.getAll();
+  console.log("All", $scope.all);
 
 })
 

@@ -2,11 +2,29 @@
     <ion-content>
         <h1>Title</h1>
         <p>Nesting test <span>Nested</span></p>
-        <button class="button button-energized" ng-click="getAll()">
-            Get All Things
+        <h2>Get All</h2>
+        <button class="button button-energized" ng-click="showList = !showList">
+            {{showList ? "Hide Things" : "Show Things"}}
         </button>
-        <form novalidate>
-            <ion-input></ion-input>
+        <ul ng-show="showList">
+            <li ng-repeat="thing in all track by $index">
+                {{thing}}
+            </li>
+        </ul>
+        <br>
+        <br>
+        <h2>Add thing</h2>
+        <form ng-submit="add(addedItem)">
+            <input ng-model="addedItem" required>
         </form>
+        <br>
+        <br>
+        <h2>Remove thing</h2>
+        <select ng-model="removedItem" ng-options="thing for thing in all track by $index">
+        </select>
+        <button ng-click="remove(removedItem)">
+            Remove
+        </button>
+
     </ion-content>
 </ion-view>
